@@ -30,4 +30,6 @@ rebel.xml
 .gradle
 /build/
 .gradletasknamecache
- 
+
+# etc
+Temp.java
