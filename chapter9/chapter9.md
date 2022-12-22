@@ -168,16 +168,67 @@ public static void main(String[] args) {
 
 # 12
 ```java
-
+public static int getRand(int from, int to) {
+    return (int) (Math.random() * (Math.abs(to-from)+1)) + Math.min(from, to);
+}
 ```
 
 # 13
 ```java
+static int stringCount(String src, String key, int pos) {
+    int count = 0;
+    int index = 0;
+    if (key == null || key.length() == 0)
+        return 0;
 
+    while((index = src.indexOf(key, pos))!=-1) {
+        count++;
+        pos = index + key.length();
+    }
+
+    return count;
+}
 ```
 
 # 14
 ```java
+public static void main(String[] args) {
+    String[] phoneNumArr = {
+    "012-3456-7890", "099-2456-7980",
+    "088-2346-9870", "013-3456-7890"
+    };
 
+    ArrayList<String> list = new ArrayList<>();
+
+    Scanner s = new Scanner(System.in);
+
+    while (true) {
+        System.out.print(">>");
+        String input = s.nextLine().trim();
+        
+        if (input.equals("")) {
+            continue;
+        } else if (input.equalsIgnoreCase("Q")) {
+            System.exit(0);
+        }
+        
+        Pattern p = Pattern.compile(".*"+input+".*");
+        
+        for(String pNum : phoneNumArr) {
+            String onlyNum = pNum.replace("-", "");
+            Matcher m = p.matcher(onlyNum);
+            
+            if(m.find())
+                list.add(pNum);
+        }
+
+        if (list.size() > 0) {
+            System.out.println(list);
+            list.clear();
+        } else {
+            System.out.println("일치하는 번호가 없습니다 .");
+        }
+    }
+}
 ```
 
