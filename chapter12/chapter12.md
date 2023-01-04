@@ -40,7 +40,14 @@ public static <T extends Product> ArrayList<T> merge(
 
 # 5
 ```java
-
+Deck() {
+    int idx=0;
+    for (Card.Number num : Card.Number.values()) {  // enum의 value를 하나씩 가져옴
+        for (Card.Kind kind : Card.Kind.values()) {
+            cardArr[idx++] = new Card(kind, num);
+        }
+    }
+}
 ```
 
 # 6
