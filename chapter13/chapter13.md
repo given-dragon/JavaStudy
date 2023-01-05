@@ -127,4 +127,3 @@ class Exercise13_9_1 extends Thread {
 ```
 - sleep()에 의해 스레드가 일시정지 상태일 경우 interrupt()을 호출하게 되면 InterruptedException가 발생한다. 그리고 스레드의 isInterrupted값을 false로 초기화 된다.
 - 따라서 catch 블록에 interrupt()를 한번 더 넣어주어 isInterrupted값을 true로 바꾸어주어야 한다.
-- 
