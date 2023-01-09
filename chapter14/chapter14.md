@@ -72,70 +72,44 @@ public static void main(String[] args) {
 ```java
 public static void main(String[] args) {
     String[] strArr = {"aaa", "bb", "c", "dddd"};
-
     IntStream lenStream = Arrays.stream(strArr).mapToInt(String::length);
-
     System.out.println("sum = " + lenStream.max().getAsInt());
 }
 ```
 
 # 7
 ```java
-
+public static void main(String[] args) {
+    new Random().ints(1, 46)
+            .distinct() // 중복 제거
+            .limit(6)   // 6개로 제한
+            .sorted()   // 정렬
+            .forEach(System.out::println);
+}
 ```
 
 # 8
 ```java
-
+Map<Boolean, Map<Boolean, Long>> failedStuBySex =
+        Stream.of(stuArr)
+        .collect(
+        partitioningBy( // 성별 구분
+                Student::isMale,
+                partitioningBy(s -> s.getScore() > 150, counting()) // 성적 구분
+        )
+);
 ```
 
 # 9
 ```java
-
+Map<Integer, Map<Integer, Long>> totalScoreByHakAndBan =
+        Stream.of(stuArr).collect(
+                groupingBy(
+                        Student::getHak,    // 학년별 그룹화
+                        groupingBy(
+                                Student::getBan,
+                                summingLong(Student::getScore)
+                        )
+                )
+        );
 ```
-
-# 10
-```java
-
-```
-
-# 11
-```java
-
-```
-
-# 12
-```java
-
-```
-
-# 13
-```java
-
-```
-
-# 13
-```java
-
-```
-
-# 14
-```java
-
-```
-
-# 15
-```java
-
-```
-
-# 16
-```java
-
-```
-
-# 17
-```java
-
-```
-
